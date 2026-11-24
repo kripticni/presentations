@@ -14,7 +14,7 @@
    reworded: "Lanac obrade: prvo isečak, pa normalizacija" to "Prvo isečak, pa normalizacija" · 19 names the label
    reworded: "Heširanje i duboko učenje rešavaju isti problem drugačije" to "Dve porodice metoda" · 58 names the length
 */
-// Pesmokaz — generator for the PFE presentation deck.
+// Pesmokaz, generator for the PFE presentation deck.
 // Run: node deck-graphical.js   (validate with the pptx skill's scripts/office/validate.py)
 const path = require("path");
 const pptxgen = require("pptxgenjs");
@@ -70,7 +70,7 @@ const THEME = {
 
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";
-pres.title = "Pesmokaz — Razvijanje i poređenje metoda prepoznavanja pesama";
+pres.title = "Pesmokaz, Razvijanje i poređenje metoda prepoznavanja pesama";
 pres.subject = "PFE u Galeriji nauke i tehnike SANU";
 pres.author = "Lazar Aleksić, Andrej Vasiljević";
 pres.company = "Naučno-inženjerski centar PFE";
@@ -341,7 +341,7 @@ pres.addSection({ title: "Uvod" });
   });
 
   notes(
-    "Dobar dan. Ja sam Andrej Vasiljević, a ovo je Pesmokaz — projekat koji smo Lazar i ja radili uz mentore sa ETF-a. " +
+    "Dobar dan. Ja sam Andrej Vasiljević, a ovo je Pesmokaz, projekat koji smo Lazar i ja radili uz mentore sa ETF-a. " +
       "Za deset minuta pokazaćemo kako smo napravili jedan sistem koji prepoznaje pesmu iz kratkog snimka i, važnije, kako smo pošteno poredili dve potpuno različite metode na istom skupu podataka. (20 s)",
   );
 }
@@ -612,7 +612,7 @@ pres.addSection({ title: "Uvod" });
   notes(
     "Dve porodice metoda. Sa leve strane je klasično heširanje: iz spektrograma se uzimaju najjači pikovi i prave parovi. " +
       "Sa desne strane je duboko učenje: mreža uči da istu pesmu smesti blizu, a različite daleko. " +
-      "Prva je otporna na šum, druga obećava koveri i snimke uživo. Ono što retko vidimo je pošteno poređenje — to je praznina koju smo popunili. (55 s)",
+      "Prva je otporna na šum, druga obećava koveri i snimke uživo. Ono što retko vidimo je pošteno poređenje, to je praznina koju smo popunili. (55 s)",
   );
 }
 
@@ -852,7 +852,7 @@ pres.addSection({ title: "Uvod" });
   notes(
     "Ovo je cela priča u jednoj slici, i na nju se vraćamo kad god izgubimo nit. " +
       "Sa leve strane je pet sekundi snimka; iz njega se pravi mel spektrogram. " +
-      "Iz istog spektrograma idu dve grane — matematička sa pikova i heševa, i CNN sa embeddingom. " +
+      "Iz istog spektrograma idu dve grane, matematička sa pikova i heševa, i CNN sa embeddingom. " +
       "Ispod svega stoji isti protokol: 776 pesama, 16 žanrova, pet nivoa šuma i 7.281 upit. " +
       "Rezultati su 97,56 prema 81,39 odsto, a CNN je oko dvadeset puta brži. (30 s)",
   );
@@ -1048,7 +1048,7 @@ setSection("Metoda");
   });
 
   notes(
-    "Skup je 776 pesama iz FMA kolekcije, stratifikovano po 16 žanrova. Krenuli smo od 1000, ali 224 fajla su bila korumpirana — to smo uhvatili MD5 proverom. " +
+    "Skup je 776 pesama iz FMA kolekcije, stratifikovano po 16 žanrova. Krenuli smo od 1000, ali 224 fajla su bila korumpirana, to smo uhvatili MD5 proverom. " +
       "Podela je po pesmama, ne po isečcima, da model ne bi video deo iste pesme u treningu i testu. " +
       "Evaluacija ide na pet nivoa šuma, od −5 do 20 dB, sa istim slučajnim nizom za obe metode, ukupno 7.281 upit. (55 s)",
   );
@@ -1169,10 +1169,10 @@ setSection("Metoda");
   });
 
   notes(
-    "Matematička metoda radi na mel spektrogramu. Prvo izvučemo lokalne maksimume — filter 16 puta 16, prag 0,25. " +
+    "Matematička metoda radi na mel spektrogramu. Prvo izvučemo lokalne maksimume, filter 16 puta 16, prag 0,25. " +
       "Za svaki pik napravimo 15 heševa sa susedima: frekvencija pika, frekvencija cilja i vremenski pomeraj. " +
       "Ključni korak je pretraga: ne brojimo samo poklapanja, nego tražimo pomak na kome se najviše poklapaju. " +
-      "To je podiglo tačnost sa 78 na 97,56 odsto — najveći pojedinačni doprinos u celom radu. (70 s)",
+      "To je podiglo tačnost sa 78 na 97,56 odsto, najveći pojedinačni doprinos u celom radu. (70 s)",
   );
 }
 
@@ -1282,7 +1282,7 @@ setSection("Metoda");
   notes(
     "CNN grana koristi ResNet-18 prilagođen jednokanalnom mel spektrogramu. Izlaz je vektor od 128 dimenzija, normalizovan na jediničnu dužinu. " +
       "Trenira se triplet loss-om sa teškim tripletima, a za inferencu se izvozi u ONNX i kvantizuje na INT8. " +
-      "Pretraga je najbliži sused po L2 rastojanju preko FAISS-a. Bitno je da su podaci isti kao u matematičkoj grani — razlika je samo u reprezentaciji. (55 s)",
+      "Pretraga je najbliži sused po L2 rastojanju preko FAISS-a. Bitno je da su podaci isti kao u matematičkoj grani, razlika je samo u reprezentaciji. (55 s)",
   );
 }
 
@@ -1395,7 +1395,7 @@ setSection("Rezultati");
 
   notes(
     "Glavni rezultat: 97,56 prema 81,39 odsto na top-1. Matematika vodi na svakoj metriki, a razlika je 16,17 procentnih poena. " +
-      "MRR je 0,976 prema 0,850 — kad promaši prvo mesto, heširanje je i dalje mnogo bliže vrhu. " +
+      "MRR je 0,976 prema 0,850, kad promaši prvo mesto, heširanje je i dalje mnogo bliže vrhu. " +
       "Namerno kažem „na svakoj metriki u ovom protokolu“; nemamo intervale pouzdanosti ni test značajnosti, pa ne tvrdimo da je razlika statistički značajna. (65 s)",
   );
 }
@@ -1507,7 +1507,7 @@ setSection("Rezultati");
 
   notes(
     "CNN je otprilike 20 puta brži: 16 milisekundi prema 325. Ali taj benchmark je na 20 pesama i heš pretraga raste sa bazom, pa tu brojku ne treba generalizovati. " +
-      "Trening je stao na epohi 26; posle toga tačnost opada, što je klasično preprilagođavanje. Zato dodatne epohe nisu put — veći model je, i za njega ima prostora upravo zato što je inferenca tako brza. (65 s)",
+      "Trening je stao na epohi 26; posle toga tačnost opada, što je klasično preprilagođavanje. Zato dodatne epohe nisu put, veći model je, i za njega ima prostora upravo zato što je inferenca tako brza. (65 s)",
   );
 }
 
@@ -1568,7 +1568,7 @@ setSection("Rezultati");
 
   notes(
     "Zašto onda heširanje pobeđuje? Zato što smo ga testirali na njegovom terenu: zašumljeni originali, ne koveri. " +
-      "Poravnanje koristi vremensku strukturu pesme, a ne samo prisustvo heševa — zato je tako jako. " +
+      "Poravnanje koristi vremensku strukturu pesme, a ne samo prisustvo heševa, zato je tako jako. " +
       "CNN-ova prednost na strukturnim mutacijama ostaje neproverena; to je pošteno reći i pre nego što nas pitaju. (50 s)",
   );
 }
@@ -1662,7 +1662,7 @@ setSection("Zaključak");
 
   notes(
     "Da zatvorim: heširanje je tačnije, CNN je znatno brži, a prednost CNN-a na koverima je otvoreno pitanje koje tek treba testirati. " +
-      "Glavni doprinos nije pobednik, nego postavljen protokol koji omogućava da se ovo poredi ponovljivo. Hvala — spremni smo za pitanja. (20 s)",
+      "Glavni doprinos nije pobednik, nego postavljen protokol koji omogućava da se ovo poredi ponovljivo. Hvala, spremni smo za pitanja. (20 s)",
   );
 }
 

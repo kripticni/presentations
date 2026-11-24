@@ -1,8 +1,8 @@
-# Pesmokaz — plan pričanja
+# Pesmokaz, plan pričanja
 
 **Dek:** 16 slajdova · cilj **13:00** · Andrej ≈ **6:15**, Lazar ≈ **6:40**
 
-- **Andrej:** dve metode — matematičko heširanje i CNN — i njihovo uklapanje u arhitekturu.
+- **Andrej:** dve metode, matematičko heširanje i CNN, i njihovo uklapanje u arhitekturu.
 - **Lazar:** arhitektura, baza, keš, optimizacije, determinizam, demo aplikacija.
 
 Cilj podele: svako priča svoj deo, ali ukupno vreme bude skoro izjednačeno. Zajednički su slajdovi 6 i 12, gde se vidi spoj arhitekture i metoda.
@@ -39,13 +39,13 @@ Cilj podele: svako priča svoj deo, ali ukupno vreme bude skoro izjednačeno. Za
 | 7 | 776 pesama, 16 žanrova | **Lazar** | 0:55 | 776 iz FMA, 16 žanrova; 1000 → 776 zbog 224 korumpirana fajla (MD5); podela po pesmama, ne po isečcima; pet nivoa šuma; 7.281 upit. → „Keš.” |
 | 8 | Dataset se prekomputuje jednom | **Lazar** | 0:40 | 71.000 mel spektrograma u .npy; 7,8 GB na disku; dekodiranje i STFT jednom umesto po epohi; isti keš za treniranje, evaluaciju i indeksiranje; --resume preskače gotovo. → „Andrej, matematička grana.” |
 | 9 | Poravnanje: sa 78 na 97,56 | **Andrej** | 1:10 | Pikovi: filter 16×16, prag 0,25; 15 parova po piku; heš `(f₁, f₂, Δt)`; ključno je vremensko poravnanje; 78 → 97,56. → „CNN grana.” |
-| 10 | Embedding umesto heša | **Andrej** | 0:55 | ResNet-18 na jednokanalnom melu; izlaz 128-d, L2; triplet loss + hard mining; ONNX; FAISS L2. Isti podaci kao matematička grana — razlika je samo reprezentacija. → „Rezultati.” |
-| 11 | Ista pesma, isti vektor — svaki put | **Andrej** | 0:45 | Ulaz prvo isečak pa normalizacija; fiksni librosa parametri; ONNX na jednom thread-u; seed 42; float32. Granica: isti runtime i hardver. → „Rezultati.” |
+| 10 | Embedding umesto heša | **Andrej** | 0:55 | ResNet-18 na jednokanalnom melu; izlaz 128-d, L2; triplet loss + hard mining; ONNX; FAISS L2. Isti podaci kao matematička grana, razlika je samo reprezentacija. → „Rezultati.” |
+| 11 | Ista pesma, isti vektor, svaki put | **Andrej** | 0:45 | Ulaz prvo isečak pa normalizacija; fiksni librosa parametri; ONNX na jednom thread-u; seed 42; float32. Granica: isti runtime i hardver. → „Rezultati.” |
 | 12 | Tačnost | **Andrej 0:30 + Lazar 0:35** | 1:05 | Andrej: 97,56 % prema 81,39 % na top-1; 16,17 procentnih poena; heširanje vodi na svakoj metrici u ovom protokolu. Lazar: MRR 0,976 prema 0,850; isti upiti i isti nivoi šuma za obe metode; bez intervala pouzdanosti i testa značajnosti, pa ne tvrdimo više od protokola. → „Lazar, brzina.” |
-| 13 | Prostor za veći model | **Lazar** | 1:05 | CNN ~20× brži: 16 ms prema 325 ms; benchmark je 20 pesama, ne generalizovati; heš pretraga raste sa bazom, FAISS ne linearno; epoha 26, posle opada — dodatno treniranje nije put, veći model jeste. → „Andrej, zašto heširanje.” |
+| 13 | Prostor za veći model | **Lazar** | 1:05 | CNN ~20× brži: 16 ms prema 325 ms; benchmark je 20 pesama, ne generalizovati; heš pretraga raste sa bazom, FAISS ne linearno; epoha 26, posle opada, dodatno treniranje nije put, veći model jeste. → „Andrej, zašto heširanje.” |
 | 14 | Zašto heširanje pobeđuje ovde | **Andrej** | 0:50 | Testirano na zašumljenim originalima, ne na koverima; poravnanje koristi vremensku strukturu; CNN prednost na strukturnim mutacijama ostaje neproverena. → „Lazar, dalji rad.” |
-| 15 | Šta sledi | **Lazar** | 0:45 | Ograničenja: nema kovera i uživo, nema reverba, lokalne baze nisu za milione. Prvo test mutacija — jedino što može da promeni zaključak; onda veći model, interfejs, skalabilna baza. → „Andrej, zaključak.” |
-| 16 | Zaključak | **Andrej** | 0:20 | Heširanje tačnije, CNN znatno brži, prednost na koverima otvorena. Glavni doprinos je protokol koji se može ponoviti. „Hvala — spremni smo za pitanja.” |
+| 15 | Šta sledi | **Lazar** | 0:45 | Ograničenja: nema kovera i uživo, nema reverba, lokalne baze nisu za milione. Prvo test mutacija, jedino što može da promeni zaključak; onda veći model, interfejs, skalabilna baza. → „Andrej, zaključak.” |
+| 16 | Zaključak | **Andrej** | 0:20 | Heširanje tačnije, CNN znatno brži, prednost na koverima otvorena. Glavni doprinos je protokol koji se može ponoviti. „Hvala, spremni smo za pitanja.” |
 
 **Ukupno:** Andrej **6:15** · Lazar **6:40** · svega **12:55**.
 
@@ -64,7 +64,7 @@ Cilj podele: svako priča svoj deo, ali ukupno vreme bude skoro izjednačeno. Za
 | 11:15 | slajd 15 |
 | 12:55 | kraj |
 
-Ako kasnite, skratite detalje na slajdovima 9 i 11 — ne preskačite cele slajdove, jer se tako gubi veza između metode i rezultata.
+Ako kasnite, skratite detalje na slajdovima 9 i 11, ne preskačite cele slajdove, jer se tako gubi veza između metode i rezultata.
 
 ## Ako je strog limit 10:00
 
@@ -81,7 +81,7 @@ Skratite tako što ćete:
 
 Novi odnos: Andrej ≈ **5:05**, Lazar ≈ **4:55**, ukupno **10:00**.
 
-## Pitanja publike — ko odgovara
+## Pitanja publike, ko odgovara
 
 | Tema pitanja | Prvi odgovara |
 | --- | --- |
@@ -94,14 +94,14 @@ Novi odnos: Andrej ≈ **5:05**, Lazar ≈ **4:55**, ukupno **10:00**.
 | ONNX, INT8, optimizacije, latencija | **Lazar** |
 | Demo aplikacija, korisnički tok | **Lazar** |
 | Grafički apstrakt, celokupni sistem | **Lazar** |
-| Protokol, ograničenja, sledeći koraci | **Zajedno** — počinje onaj koji je vodio tu temu |
+| Protokol, ograničenja, sledeći koraci | **Zajedno**, počinje onaj koji je vodio tu temu |
 
 Ako pitanje preseca obe strane (npr. „zašto ResNet-18, a ne veći model?”), Andrej odgovara o modelu, Lazar o latenciji i optimizaciji.
 
 ## Dogovor pre nastupa
 
 - **Kliker drži Lazar.** Andrej ne dira tastaturu; prelaz se najavljuje rečenicom, ne klikom u tišini.
-- Kada jedan govori, drugi ne potvrđuje „da, da” — samo kratak znak rukom za prelaz.
+- Kada jedan govori, drugi ne potvrđuje „da, da”, samo kratak znak rukom za prelaz.
 - Na slajdovima 6 i 12 unapred znati tačnu rečenicu prelaza; tu se najlakše preklopite.
 - Ne čitati slajd. Slajd nosi broj ili sliku, a priča nosi vezu: zašto je to važno i šta sledi.
 - Probati jednom sa štopericom; ako neko pređe svoj deo za više od 30 s, skratiti sledeći put.

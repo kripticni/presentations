@@ -5,7 +5,7 @@ Private repo for building and versioning slide decks.
 ## Layout
 
 ```text
-decks/            # .pptx sources (and .potx templates) — committed
+decks/            # .pptx sources (and .potx templates), committed
 tools/
   preview.sh      # .pptx -> PDF + per-slide PNGs + preview/index.html
   serve-preview.sh# detached local web server for the gallery
@@ -19,7 +19,7 @@ Decks are generated with [`pptxgenjs`](https://gitbrent.github.io/PptxGenJS/); t
 ```text
 decks/<name>/deck.js      # generator
 decks/<name>/deck.pptx    # output (committed)
-decks/<name>/deck.pdf     # export (committed) — GitHub renders PDFs in the browser
+decks/<name>/deck.pdf     # export (committed), GitHub renders PDFs in the browser
 lib/apply_theme.py        # patches the theme palette/fonts into the .pptx
 ```
 
